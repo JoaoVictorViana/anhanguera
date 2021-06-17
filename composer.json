@@ -1,0 +1,33 @@
+{
+    "name": "jvdua/anhanguera",
+    "description": "Sistema escolar",
+    "authors": [
+        {
+            "name": "João Victor",
+            "email": "jv.duarte.viana@gmail.com"
+        }
+    ],
+    "require": {
+        "roots/wordpress": "*"
+    },
+    "repositories": [
+        {
+          "type": "composer",
+          "url": "https://wpackagist.org"
+        }
+    ],
+    "scripts": {
+        "move-wordpress": [
+          "rm -rf wordpress/wp-content/plugins/*",
+          "rm -rf wordpress/wp-content/themes/*",
+          "cp -rf wordpress/* .",
+          "rm -rf wordpress"
+        ],
+        "post-install-cmd": [
+          "@move-wordpress"
+        ],
+        "post-update-cmd": [
+          "@move-wordpress"
+        ]
+    }
+}
